@@ -201,6 +201,14 @@ enum Commands {
         #[structopt(subcommand)]
         command: NewCommands,
     },
+    #[structopt(
+        about = "Manage meta-bundles",
+        setting(DisableHelpSubcommand)
+    )]
+    Meta {
+        #[structopt(subcommand)]
+        command: MetaCommands,
+    },
     #[structopt(setting(Hidden))]
     Repl,
 }
@@ -621,6 +629,14 @@ fn main() {
                 std::process::exit(1)
             }
         },
+
+        Commands::Meta { command } => match command {
+            MetaCommands::Fetch {
+
+            } => {
+                
+            }
+        }
 
         Commands::Repl => std::process::exit(launch_repl()),
     }
